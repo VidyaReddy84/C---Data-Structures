@@ -1,0 +1,60 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<conio.h>
+struct node{
+	int data;
+	struct node *next;
+}*s,*l,*p,*c;
+void insertnode();
+void deletenode();
+void display();
+int main(){
+	int x;
+	s = l = c = p = NULL;
+	while(1){
+		system("cls");
+		printf("1. Insert \n");
+		printf("2. Delete \n");
+		printf("3. Display \n");
+		printf("4. Exit \n");
+		printf("Enter your choice : ");
+		scanf("%d",&x);
+		switch(x){
+			case 1 : insertnode(); break;
+			case 2 : deletenode(); break;
+			case 3 : display();    break;
+			case 4 : printf("Program is Terminating. . . ");return 0;
+			break;
+		}
+	}
+}
+void insertnode(){
+	struct node *nn;
+	nn = (struct node *)malloc(sizeof(struct node));
+    printf("\n Enter the value : ");
+    scanf("%d",&nn->data);
+    nn->next = NULL;
+	if(s == NULL){
+    	s = l = nn;
+	}
+	else {
+		nn->next = s;
+		s = nn;
+	}
+	printf("\n node is inserted at the end \n");
+	getch();
+} 
+void deletenode(){
+}
+void display(){
+	if(s == NULL){
+	printf("Linked list is empty \n");
+    getch();
+	}
+	else{
+	for(c=s;c!=NULL;c=c->next){
+		printf("%d\n",c->data);
+	}
+	getch();
+    }
+}
