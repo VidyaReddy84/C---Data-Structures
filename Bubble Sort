@@ -1,0 +1,24 @@
+#include<stdio.h>
+bubblesort(int size,int a[size]){
+	int i,j,temp;
+	for(i=0;i<size;i++){
+		for(j=0;j<size;j++)
+		if(a[i] < a[j]){
+			temp = a[i];
+			a[i] = a[j];
+			a[j] = temp; 
+		}
+	}
+}
+int main(){
+	int size;
+	printf("Enter the size of array: ");
+	scanf("%d",&size);
+	printf("Enter array elements: ");
+	int a[size],i;
+	for(i=0;i<size;i++)
+	scanf("%d",&a[i]);
+	bubblesort(size,a);
+	for(i=0;i<size;i++)
+	printf("%d ",a[i]);
+}
