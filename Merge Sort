@@ -1,0 +1,51 @@
+#include<stdio.h>
+mergesort(int size,int a[size],int low,int mid,int high){
+	int i=low,j=mid+1,k=0,temp[size];
+	while(i<=mid && j<=high){
+		if(a[i] < a[j]){ 
+		// For elemets to be in desending order put " > " in above if statement
+			temp[k] = a[i];
+			i++; k++;
+		}
+		else{
+			temp[k] = a[j];
+			k++;j++;
+		}
+	}
+	while(i<=mid){
+		temp[k] = a[i];
+		i++;k++;
+	}
+	while(j<=high){
+		temp[k] = a[j];
+		j++;k++;
+	}
+	k=0;
+	for(i=low;i<=high;i++){
+	a[i] = temp[k];
+	k++;
+    }
+}
+merge(int size,int a[size],int low,int high){
+	int mid = (low+high)/2;
+	if(low<high){
+		merge(size,a,low,mid);
+		// Divides the left part of the array 
+		merge(size,a,mid+1,high);
+		// Divides the right part of the array
+		mergesort(size,a,low,mid,high);
+		// Merges the elements in the sub-array
+	}
+}
+int main(){
+	int size;
+	printf("Enter the size of Array : ");
+	scanf("%d",&size); 
+	int a[size],i;
+	printf("Enter the Elements of Array: ");
+	for(i=0;i<size;i++)
+	scanf("%d",&a[i]);
+	merge(size,a,0,size-1);
+	for(i=0;i<size;i++)
+	printf("%d ",a[i]);
+}
